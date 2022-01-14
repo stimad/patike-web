@@ -31,14 +31,14 @@ class SnickersRemoval extends StatelessWidget {
               onPressed: (int index) {
                 removalController.navigateToSection(index);
               },
-              isSelected: removalController.selectedRemoval,
+              isSelected: removalController.selectedRemoval.value,
             )),
         Padding(
           padding: const EdgeInsets.all(10),
           child: Obx(() => Text(removalController.getDescritpion())),
         ),
         SearchInputSnickers(),
-        // _getContent(context)
+        _getContent(context)
       ],
     );
   }
@@ -88,8 +88,8 @@ class SnickersRemoval extends StatelessWidget {
         DataCell(Text(snickers.color!)),
         DataCell(Text(snickers.size.toString())),
         DataCell(Text(snickers.count.toString())),
-        DataCell(Obx(
-          () => IconButton(
+        DataCell(
+          IconButton(
             onPressed: () {
               if (removalController.selectedIndex.value == 0) {
                 showActionDialog(
@@ -110,7 +110,7 @@ class SnickersRemoval extends StatelessWidget {
               color: Colors.red,
             ),
           ),
-        )),
+        ),
         DataCell(Text(snickers.id.toString())),
       ]));
     }

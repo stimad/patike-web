@@ -38,13 +38,13 @@ class StatusSnickers extends StatelessWidget {
                 onPressed: (int index) {
                   statisticsController.navigateToSection(index);
                 },
-                isSelected: statisticsController.selectedStatistics,
+                isSelected: statisticsController.selectedStatistics.value,
               )),
           const SizedBox(
             height: 30,
           ),
         ]),
-        statisticsController.getPropperStatistics()
+        Obx(() => statisticsController.getPropperStatistics())
       ],
     );
   }

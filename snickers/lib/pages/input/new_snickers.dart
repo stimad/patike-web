@@ -28,7 +28,7 @@ class NewSnickers extends StatelessWidget {
                     onPressed: (int index) {
                       newSnickersController.navigateToInsertSection(index);
                     },
-                    isSelected: newSnickersController.newSnickersTolggle,
+                    isSelected: newSnickersController.newSnickersTolggle.value,
                   )),
               const SizedBox(
                 height: 30,

@@ -172,11 +172,11 @@ class StatisticsController extends GetxController {
       case 0:
         return const SearchSnickers();
       case 1:
-        return SoldSnickers();
-      case 2:
-        return UnsoldSnickers();
-      case 3:
         return AllSnickers();
+      case 2:
+        return SoldSnickers();
+      case 3:
+        return UnsoldSnickers();
       case 4:
         return EditStatus();
       default:
