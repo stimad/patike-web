@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/data/rest/requests.dart';
-import 'package:snickers/dtos/snickers.dart';
 import 'package:snickers/utils/utils.dart';
 
 class EditStatus extends StatelessWidget {

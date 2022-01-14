@@ -13,11 +13,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case SnickersStatus:
       return _getPageRoute(StatusSnickers());
     case SnickersDeletion:
-      return _getPageRoute(SnickersRemoval());
+      return _getPageRoute(const SnickersRemoval());
     case Authentication:
       return _getPageRoute(UserAuthentication());
     default:
-      return _getPageRoute(SaleSnickers());
+      return _getPageRoute(const SaleSnickers());
   }
 }
 

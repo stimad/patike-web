@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/dtos/snickers.dart';
 import 'package:snickers/pages/status/details/search_input.dart';
-import 'package:snickers/widgets/spinner.dart';
 
 class SearchSnickers extends StatelessWidget {
   const SearchSnickers({Key? key}) : super(key: key);
@@ -23,40 +22,38 @@ class SearchSnickers extends StatelessWidget {
   }
 
   Widget _getContent(BuildContext context) {
-    return Obx(
-      () => statisticsController.isLoading.value
-          ? const Spinner()
-          : Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: DataTable2(
-                    columnSpacing: 12,
-                    horizontalMargin: 12,
-                    minWidth: 600,
-                    columns: const [
-                      DataColumn2(
-                        label: Text('Model'),
-                        size: ColumnSize.L,
-                      ),
-                      DataColumn(
-                        label: Text('Boja'),
-                      ),
-                      DataColumn(
-                        label: Text('Veličina'),
-                      ),
-                      DataColumn(
-                        label: Text('Komada'),
-                      ),
-                      DataColumn(label: Text("Izmeni")),
-                      DataColumn(
-                        label: Text('ID'),
-                        numeric: true,
-                      ),
-                    ],
-                    rows: _createDataRows(
-                        statisticsController.getFoundSnickers(), context)),
-              ),
-            ),
+    return Expanded(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Obx(
+          () => DataTable2(
+              columnSpacing: 12,
+              horizontalMargin: 12,
+              minWidth: 600,
+              columns: const [
+                DataColumn2(
+                  label: Text('Model'),
+                  size: ColumnSize.L,
+                ),
+                DataColumn(
+                  label: Text('Boja'),
+                ),
+                DataColumn(
+                  label: Text('Veličina'),
+                ),
+                DataColumn(
+                  label: Text('Komada'),
+                ),
+                DataColumn(label: Text("Izmeni")),
+                DataColumn(
+                  label: Text('ID'),
+                  numeric: true,
+                ),
+              ],
+              rows: _createDataRows(
+                  statisticsController.getFoundSnickers(), context)),
+        ),
+      ),
     );
   }
 

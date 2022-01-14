@@ -44,7 +44,7 @@ class StatusSnickers extends StatelessWidget {
             height: 30,
           ),
         ]),
-        Obx(() => statisticsController.getPropperStatistics())
+        statisticsController.getPropperStatistics()
       ],
     );
   }

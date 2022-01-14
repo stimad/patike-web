@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snickers/routing/routes.dart';
@@ -13,7 +12,7 @@ class MenuController extends GetxController {
   }
 
   onHover(String itemName) {
-    if(!isActive(itemName)) hoverItem.value = itemName;
+    if (!isActive(itemName)) hoverItem.value = itemName;
   }
 
   isActive(String itemName) => activeItem.value == itemName;
@@ -21,7 +20,7 @@ class MenuController extends GetxController {
   isHovering(String itemName) => hoverItem.value == itemName;
 
   Widget returnIconFor(String itemName) {
-    switch(itemName) {
+    switch (itemName) {
       case SnickersInput:
         return _customIcon(Icons.edit, itemName);
       case SnickersStatus:
@@ -36,8 +35,16 @@ class MenuController extends GetxController {
   }
 
   Widget _customIcon(IconData iconData, String itemName) {
-    if(isActive(itemName)) return Icon(iconData, size: 22, color: Colors.black,);
-
-    return Icon(iconData, color: isHovering(itemName) ? Colors.black : Colors.grey,);
+    if (isActive(itemName)) {
+      return Icon(
+        iconData,
+        size: 22,
+        color: Colors.black,
+      );
+    }
+    return Icon(
+      iconData,
+      color: isHovering(itemName) ? Colors.black : Colors.grey,
+    );
   }
 }

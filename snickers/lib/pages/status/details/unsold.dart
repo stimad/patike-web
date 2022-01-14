@@ -12,34 +12,35 @@ class UnsoldSnickers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: DataTable2(
-                columnSpacing: 12,
-                horizontalMargin: 12,
-                minWidth: 600,
-                columns: const [
-                  DataColumn2(
-                    label: Text('Model'),
-                    size: ColumnSize.L,
-                  ),
-                  DataColumn(
-                    label: Text('Boja'),
-                  ),
-                  DataColumn(
-                    label: Text('Veličina'),
-                  ),
-                  DataColumn(
-                    label: Text('Komada'),
-                  ),
-                  DataColumn(
-                    label: Text('ID'),
-                    numeric: true,
-                  ),
-                ],
-                rows: createDataRows(statisticsController.getUnsoldSnickers())),
-          ),
-        ));
+    return Expanded(
+        child: SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Obx(
+        () => DataTable2(
+            columnSpacing: 12,
+            horizontalMargin: 12,
+            minWidth: 600,
+            columns: const [
+              DataColumn2(
+                label: Text('Model'),
+                size: ColumnSize.L,
+              ),
+              DataColumn(
+                label: Text('Boja'),
+              ),
+              DataColumn(
+                label: Text('Veličina'),
+              ),
+              DataColumn(
+                label: Text('Komada'),
+              ),
+              DataColumn(
+                label: Text('ID'),
+                numeric: true,
+              ),
+            ],
+            rows: createDataRows(statisticsController.getUnsoldSnickers())),
+      ),
+    ));
   }
 }

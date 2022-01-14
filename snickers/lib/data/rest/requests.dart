@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/data/rest/client.dart';
 import 'package:snickers/dtos/search_snickers.dart';
-import 'package:snickers/dtos/selling_snickers.dart';
 import 'package:snickers/dtos/snickers.dart';
 import 'package:snickers/utils/utils.dart';
 

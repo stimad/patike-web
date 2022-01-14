@@ -1,5 +1,3 @@
-import 'package:snickers/dtos/snickers.dart';
-
 class SearchSnickersDTO {
   final String? model;
   final String? color;

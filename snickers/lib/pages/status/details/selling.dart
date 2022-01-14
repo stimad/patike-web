@@ -5,7 +5,7 @@ import 'package:snickers/controllers/statistics_controller.dart';
 import 'package:snickers/dtos/selling_snickers.dart';
 
 class Selling extends StatelessWidget {
-  Selling({Key? key}) : super(key: key) {}
+  const Selling({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/utils/utils.dart';
 

@@ -34,8 +34,8 @@ class NewSnickers extends StatelessWidget {
                 height: 30,
               ),
               ResponsiveWidget.isCustomScreen(context)
-                  ? LargeCardInsertion()
-                  : SmallCardInsertion(),
+                  ? const LargeCardInsertion()
+                  : const SmallCardInsertion(),
             ],
           )),
     );
