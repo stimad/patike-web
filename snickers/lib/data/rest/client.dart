@@ -20,7 +20,6 @@ Future<Map<dynamic, dynamic>> executeGETQueryParam(
 
 Future<Map<dynamic, dynamic>> executePOST(String relativePath,
     {Object? body}) async {
-  print(body);
   var response = await http.post(createUri(relativePath),
       headers: {"content-type": "application/json"}, body: jsonEncode(body));
   return jsonDecode(utf8.decode(response.bodyBytes)) as Map;

@@ -8,11 +8,15 @@
             "name": "snickers",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main.dart",
             "args": [
-              "-d",
-              "chrome"
+                "-d", "chrome"
             ]
+        },
+        {
+            "name": "snickers (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
         }
     ]
 }
