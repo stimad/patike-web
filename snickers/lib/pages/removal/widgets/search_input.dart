@@ -136,7 +136,7 @@ class SearchInputSnickers extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: _submitForm,
-              child: const Text('Pretrazi'),
+              child: const Text('Pretraži'),
             )
           ],
         ),

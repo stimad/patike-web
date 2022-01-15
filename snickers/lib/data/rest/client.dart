@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 
 const _CURRENT_SCHEMA = "https";
 const _hostname = "guarded-fjord-66327.herokuapp.com";
+// const _CURRENT_SCHEMA = "http";
+// const _hostname = "localhost:5000";
 
 Future<Map<dynamic, dynamic>> executeGET(String relativePath) async {
   var response =

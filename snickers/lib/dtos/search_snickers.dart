@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class SearchSnickersDTO {
   final String? model;
   final String? color;
@@ -10,6 +12,17 @@ class SearchSnickersDTO {
       {this.fromDate, this.toDate});
 
   Map toJson() {
+    if (fromDate != null && toDate != null) {
+      final DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+      return {
+        "model": model,
+        "color": color,
+        "size": size,
+        "available": available,
+        "fromDate": dateFormat.format(fromDate!),
+        "toDate": dateFormat.format(toDate!)
+      };
+    }
     return {
       "model": model,
       "color": color,
