@@ -17,7 +17,6 @@ class SingleInsert extends StatelessWidget {
   }
 
   _submitForm(BuildContext context) {
-    navigationController.setIsLoading(true);
     var snickers = Snickers(
         0,
         newSnickersController.singleInsertModelCtrl.text,
@@ -29,6 +28,7 @@ class SingleInsert extends StatelessWidget {
       showErrorDialog(context, "Greska", "Unesene vrednosti nisu dobre.");
       return;
     }
+    navigationController.setIsLoading(true);
     insertSnickers(context, snickers);
   }
 
