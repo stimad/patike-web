@@ -15,7 +15,7 @@ class SnickersRemoval extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 30,
+          height: 5,
         ),
         Obx(() => ToggleButtons(
               children: const [

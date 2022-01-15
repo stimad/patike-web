@@ -18,7 +18,7 @@ class NewSnickers extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 30,
+                height: 5,
               ),
               Obx(() => ToggleButtons(
                     children: const [
@@ -31,7 +31,7 @@ class NewSnickers extends StatelessWidget {
                     isSelected: newSnickersController.newSnickersTolggle.value,
                   )),
               const SizedBox(
-                height: 30,
+                height: 5,
               ),
               ResponsiveWidget.isCustomScreen(context)
                   ? const LargeCardInsertion()

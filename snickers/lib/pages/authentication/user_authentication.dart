@@ -63,7 +63,7 @@ class UserAuthentication extends StatelessWidget {
             ),
             const SizedBox(
               width: 20.0,
-              height: 20.0,
+              height: 5.0,
             ),
             ElevatedButton(
               onPressed: () => _authorize(context),

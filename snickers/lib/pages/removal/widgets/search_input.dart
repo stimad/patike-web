@@ -132,7 +132,7 @@ class SearchInputSnickers extends StatelessWidget {
                 : Container()),
             const SizedBox(
               width: 20.0,
-              height: 10.0,
+              height: 5.0,
             ),
             ElevatedButton(
               onPressed: _submitForm,

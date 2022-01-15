@@ -14,7 +14,7 @@ class StatusSnickers extends StatelessWidget {
       children: [
         Column(children: [
           const SizedBox(
-            height: 30,
+            height: 5,
           ),
           Obx(() => ToggleButtons(
                 children: const [
@@ -44,7 +44,7 @@ class StatusSnickers extends StatelessWidget {
                 isSelected: statisticsController.selectedStatistics.value,
               )),
           const SizedBox(
-            height: 30,
+            height: 5,
           ),
         ]),
         Obx(() => statisticsController.getPropperStatistics())
