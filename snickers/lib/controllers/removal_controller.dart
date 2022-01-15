@@ -16,6 +16,8 @@ class RemovalController extends GetxController {
   final TextEditingController searchModelCtrl = TextEditingController();
   final TextEditingController searchSizeCtrl = TextEditingController();
   final TextEditingController searchColorCtrl = TextEditingController();
+  final Rx<DateTime> fromDate = DateTime.now().obs;
+  final Rx<DateTime> toDate = DateTime.now().obs;
 
   String getDescritpion() {
     return description.value;
@@ -79,7 +81,11 @@ class RemovalController extends GetxController {
   }
 
   SearchSnickersDTO getSearchFilter() {
-    return SearchSnickersDTO(searchModelCtrl.text, searchColorCtrl.text,
-        int.tryParse(searchSizeCtrl.text), null);
+    return selectedIndex.value == 0
+        ? SearchSnickersDTO(searchModelCtrl.text, searchColorCtrl.text,
+            int.tryParse(searchSizeCtrl.text), null)
+        : SearchSnickersDTO(searchModelCtrl.text, searchColorCtrl.text,
+            int.tryParse(searchSizeCtrl.text), null,
+            fromDate: fromDate.value, toDate: toDate.value);
   }
 }

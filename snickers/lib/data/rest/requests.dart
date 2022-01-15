@@ -27,25 +27,33 @@ void findSnickers(SearchSnickersDTO snickersFilter) {
 }
 
 void findRemovalSnickers(SearchSnickersDTO snickersFilter) {
-  executePOST("statistics/find", body: snickersFilter.toJson())
-      .then((value) => removalController.setFoundSnickers(value));
+  executePOST("statistics/find", body: snickersFilter.toJson()).then((value) {
+    navigationController.setIsLoading(false);
+    removalController.setFoundSnickers(value);
+  });
 }
 
 void findRemovalSoldSnickers(SearchSnickersDTO snickersFilter) {
   executePOST("statistics/sold/snickers/find", body: snickersFilter.toJson())
-      .then((value) => removalController.setFoundSnickers(value));
+      .then((value) {
+    navigationController.setIsLoading(false);
+    removalController.setFoundSnickers(value);
+  });
 }
 
 void cancelSell(BuildContext context, int sellingSnikckersId) {
   executePOST("statistics/cancel/sell", body: {"id": sellingSnikckersId})
       .then((value) {
+    navigationController.setIsLoading(false);
     checkCallbackRemoval(context, value, removalController.resetFoundSnickers);
   });
 }
 
 void findSnickersToSell(SearchSnickersDTO snickersFilter) {
-  executePOST("statistics/find", body: snickersFilter.toJson())
-      .then((value) => sellingController.setFoundSnickers(value));
+  executePOST("statistics/find", body: snickersFilter.toJson()).then((value) {
+    navigationController.setIsLoading(false);
+    sellingController.setFoundSnickers(value);
+  });
 }
 
 void fetchSpecificSnickers(int snickersId) {
@@ -56,8 +64,10 @@ void fetchSpecificSnickers(int snickersId) {
 // ######### INSERTION
 
 void insertSnickers(BuildContext context, Snickers snickers) {
-  executePOST("add/snickers", body: snickers.toJson())
-      .then((value) => checkInsertion(context, value));
+  executePOST("add/snickers", body: snickers.toJson()).then((value) {
+    navigationController.setIsLoading(false);
+    checkInsertion(context, value);
+  });
 }
 
 void insertSnickersSeries(BuildContext context, List<Snickers> snickersSeries) {
@@ -66,13 +76,17 @@ void insertSnickersSeries(BuildContext context, List<Snickers> snickersSeries) {
     jsonSnickersList.add(sn.toJson());
   }
   executePOST("add/snickers/series", body: {"snickersList": jsonSnickersList})
-      .then((value) => checkInsertion(context, value));
+      .then((value) {
+    navigationController.setIsLoading(false);
+    checkInsertion(context, value);
+  });
 }
 
 // ######### REMOVAL
 
 void removeSnickers(BuildContext context, Snickers snickers) {
   executeDELETE("delete/snickers", body: {"id": snickers.id}).then((value) {
+    navigationController.setIsLoading(false);
     checkCallbackRemoval(context, value, removalController.resetFoundSnickers);
   });
 }
@@ -80,16 +94,20 @@ void removeSnickers(BuildContext context, Snickers snickers) {
 // ######### SELLING
 
 void sellSnickers(BuildContext context, Map snickersMap) {
-  executePOST("selling/snickers", body: snickersMap)
-      .then((value) => checkSell(context, value));
+  executePOST("selling/snickers", body: snickersMap).then((value) {
+    navigationController.setIsLoading(false);
+    checkSell(context, value);
+  });
 }
 
 // ######### EDITING
 
 void editSnickersState(
     BuildContext context, Snickers snickers, Function action) {
-  executePUT("statistics/edit", body: snickers)
-      .then((value) => checkEditing(context, value, action));
+  executePUT("statistics/edit", body: snickers).then((value) {
+    navigationController.setIsLoading(false);
+    checkEditing(context, value, action);
+  });
 }
 
 // ######### AUTHENTICATION

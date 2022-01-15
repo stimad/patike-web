@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/data/rest/requests.dart';
 import 'package:snickers/dtos/response.dart';
 import 'package:snickers/dtos/search_snickers.dart';
@@ -48,7 +49,7 @@ class StatisticsController extends GetxController {
   }
 
   setFoundSnickers(Map<dynamic, dynamic> res) {
-    isLoading.value = true;
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;
@@ -68,7 +69,7 @@ class StatisticsController extends GetxController {
   }
 
   setSnickers(Map<dynamic, dynamic> res) {
-    isLoading.value = true;
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;
@@ -89,7 +90,7 @@ class StatisticsController extends GetxController {
   }
 
   setSoldSnickers(Map<dynamic, dynamic> res) {
-    isLoading.value = true;
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;
@@ -109,7 +110,7 @@ class StatisticsController extends GetxController {
   }
 
   setUnsoldSnickers(Map<dynamic, dynamic> res) {
-    isLoading.value = true;
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;
@@ -127,7 +128,7 @@ class StatisticsController extends GetxController {
   List<Snickers> getUnsoldSnickers() => [...unsoldSnickers];
 
   setSellingSnickers(Map<dynamic, dynamic> res) {
-    isLoading.value = true;
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;
@@ -168,20 +169,31 @@ class StatisticsController extends GetxController {
   }
 
   Widget getPropperStatistics() {
+    Widget result;
     switch (selectedIndex.value) {
       case 0:
-        return const SearchSnickers();
+        result = const SearchSnickers();
+        break;
       case 1:
-        return AllSnickers();
+        fetchAllSnickers();
+        result = const AllSnickers();
+        break;
       case 2:
-        return SoldSnickers();
+        fetchSoldSnickers();
+        result = const SoldSnickers();
+        break;
       case 3:
-        return UnsoldSnickers();
+        fetchUnsoldSnickers();
+        result = const UnsoldSnickers();
+        break;
       case 4:
-        return EditStatus();
+        result = EditStatus();
+        break;
       default:
-        return AllSnickers();
+        fetchAllSnickers();
+        result = const AllSnickers();
     }
+    return result;
   }
 
   showEditWindow(int snickersId) {
@@ -196,7 +208,7 @@ class StatisticsController extends GetxController {
   }
 
   populateEditForm(Map<dynamic, dynamic> res) {
-    _setIsLoading(true);
+    navigationController.setIsLoading(false);
     APIResponse response = APIResponse.fromJson(res);
     if (response.status == 0) {
       List results = response.results;

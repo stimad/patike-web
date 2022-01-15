@@ -3,8 +3,11 @@ class SearchSnickersDTO {
   final String? color;
   final int? size;
   final bool? available;
+  final DateTime? fromDate;
+  final DateTime? toDate;
 
-  SearchSnickersDTO(this.model, this.color, this.size, this.available);
+  SearchSnickersDTO(this.model, this.color, this.size, this.available,
+      {this.fromDate, this.toDate});
 
   Map toJson() {
     return {

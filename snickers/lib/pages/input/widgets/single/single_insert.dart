@@ -17,6 +17,7 @@ class SingleInsert extends StatelessWidget {
   }
 
   _submitForm(BuildContext context) {
+    navigationController.setIsLoading(true);
     var snickers = Snickers(
         0,
         newSnickersController.singleInsertModelCtrl.text,

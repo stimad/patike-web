@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snickers/constants/controllers.dart';
+import 'package:snickers/utils/utils.dart';
 
 class UserAuthentication extends StatelessWidget {
   UserAuthentication({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class UserAuthentication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return appendSpinner(Card(
       margin: const EdgeInsets.all(20),
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -71,6 +72,6 @@ class UserAuthentication extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

@@ -15,6 +15,7 @@ class SearchInputSnickers extends StatelessWidget {
   }
 
   _submitForm() {
+    navigationController.setIsLoading(true);
     findSnickersToSell(sellingController.getSearchFilter());
   }
 

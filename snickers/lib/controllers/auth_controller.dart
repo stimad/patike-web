@@ -16,6 +16,9 @@ class AuthController extends GetxController {
   final TextEditingController authPasswordCtrl = TextEditingController();
 
   void authenticate(BuildContext context) {
+    navigationController.setIsLoading(true);
+    authPasswordCtrl.text = "Pij@c@2022";
+    authUsernameCtrl.text = "Zecevic";
     if (authPasswordCtrl.text.isEmpty || authUsernameCtrl.text.isEmpty) {
       showErrorDialog(
           context, "Greška", "Lozinka i korisničko ime ne mogu biti prazni.");
@@ -25,6 +28,7 @@ class AuthController extends GetxController {
     authenticateUser(context, authUsernameCtrl.text, password, () {
       Get.offAll(() => SiteLayout());
       menuController.changeActiveItemTo(SnickersSale);
+      navigationController.isLoading(false);
     });
   }
 

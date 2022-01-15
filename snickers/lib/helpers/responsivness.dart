@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:snickers/constants/controllers.dart';
+import 'package:snickers/utils/utils.dart';
+import 'package:snickers/widgets/spinner.dart';
 
 const int largeScreenSize = 1366;
 const int mediumScreenSize = 768;
@@ -40,11 +44,11 @@ class ResponsiveWidget extends StatelessWidget {
       builder: (context, constraints) {
         double _width = constraints.maxWidth;
         if (_width >= largeScreenSize) {
-          return largeScreen;
+          return appendSpinner(largeScreen);
         } else if (_width < largeScreenSize && _width >= mediumScreenSize) {
-          return mediumScreen ?? largeScreen;
+          return appendSpinner(mediumScreen ?? largeScreen);
         } else {
-          return smallScreen ?? largeScreen;
+          return appendSpinner(smallScreen ?? largeScreen);
         }
       },
     );

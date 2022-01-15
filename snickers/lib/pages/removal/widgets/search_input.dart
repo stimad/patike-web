@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/utils/utils.dart';
 
@@ -14,6 +16,7 @@ class SearchInputSnickers extends StatelessWidget {
   }
 
   _submitForm() {
+    navigationController.setIsLoading(true);
     removalController.findPropperSnickers(removalController.getSearchFilter());
   }
 
@@ -35,12 +38,33 @@ class SearchInputSnickers extends StatelessWidget {
     return null;
   }
 
+  void _selectFromdDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(), // Refer step 1
+      firstDate: DateTime(DateTime.now().year - 1),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+    removalController.fromDate.value = picked ?? DateTime.now();
+  }
+
+  void _selectToDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(), // Refer step 1
+      firstDate: DateTime(DateTime.now().year - 1),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+    removalController.toDate.value = picked ?? DateTime.now();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final dFormat = DateFormat("yyyy-MM-dd");
     return Card(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(5),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -85,8 +109,30 @@ class SearchInputSnickers extends StatelessWidget {
               ),
             ),
             const SizedBox(
+              height: 5,
+            ),
+            Obx(() => removalController.selectedIndex.value != 0
+                ? Row(
+                    children: [
+                      ElevatedButton(
+                        onPressed: () => _selectFromdDate(context),
+                        child: Text(
+                            "od ${dFormat.format(removalController.fromDate.value)}"),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => _selectToDate(context),
+                        child: Text(
+                            "do ${dFormat.format(removalController.toDate.value)}"),
+                      ),
+                    ],
+                  )
+                : Container()),
+            const SizedBox(
               width: 20.0,
-              height: 20.0,
+              height: 10.0,
             ),
             ElevatedButton(
               onPressed: _submitForm,

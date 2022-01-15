@@ -2,13 +2,10 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snickers/constants/controllers.dart';
-import 'package:snickers/data/rest/requests.dart';
 import 'package:snickers/utils/utils.dart';
 
 class SoldSnickers extends StatelessWidget {
-  SoldSnickers({Key? key}) : super(key: key) {
-    fetchSoldSnickers();
-  }
+  const SoldSnickers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

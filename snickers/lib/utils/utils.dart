@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:snickers/constants/controllers.dart';
 import 'package:snickers/dtos/response.dart';
 import 'package:snickers/dtos/snickers.dart';
+import 'package:snickers/widgets/spinner.dart';
 
 bool isNumeric(String? s) {
   if (s == null) {
@@ -156,4 +158,12 @@ bool areSnickersValuesOK(Snickers snickers) {
       snickers.size! < 0 && snickers.count == null ||
       snickers.count! < 0) return false;
   return true;
+}
+
+Widget appendSpinner(Widget screen) {
+  return Stack(children: [
+    screen,
+    Obx(() =>
+        navigationController.isLoading.value ? const Spinner() : Container())
+  ]);
 }

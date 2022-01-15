@@ -36,6 +36,9 @@ class StatusSnickers extends StatelessWidget {
                   ),
                 ],
                 onPressed: (int index) {
+                  if (index != 0) {
+                    navigationController.setIsLoading(true);
+                  }
                   statisticsController.navigateToSection(index);
                 },
                 isSelected: statisticsController.selectedStatistics.value,

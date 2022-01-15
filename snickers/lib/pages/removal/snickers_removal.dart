@@ -92,17 +92,19 @@ class SnickersRemoval extends StatelessWidget {
           IconButton(
             onPressed: () {
               if (removalController.selectedIndex.value == 0) {
-                showActionDialog(
-                    context,
-                    "Provera",
+                showActionDialog(context, "Provera",
                     "Da li ste sigurni da zelite da potpuno uklonite patike: ${snickers.model} boje: ${snickers.color} velicine: ${snickers.size}",
-                    () => removeSnickers(context, snickers));
+                    () {
+                  navigationController.setIsLoading(true);
+                  removeSnickers(context, snickers);
+                });
               } else {
-                showActionDialog(
-                    context,
-                    "Provera",
+                showActionDialog(context, "Provera",
                     "Da li ste sigurni da zelite da ponistite prodaju patike: ${snickers.model} boje: ${snickers.color} velicine: ${snickers.size}",
-                    () => cancelSell(context, snickers.id));
+                    () {
+                  navigationController.setIsLoading(true);
+                  cancelSell(context, snickers.id);
+                });
               }
             },
             icon: const Icon(

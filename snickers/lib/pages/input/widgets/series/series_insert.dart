@@ -51,6 +51,7 @@ class SeriesInsert extends StatelessWidget {
           int.tryParse(newSnickersController.seriesInsertCountCtrl.text),
           0));
     }
+    navigationController.setIsLoading(true);
     insertSnickersSeries(context, snickersList);
   }
 

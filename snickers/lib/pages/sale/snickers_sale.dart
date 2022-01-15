@@ -91,6 +91,7 @@ class SaleSnickers extends StatelessWidget {
   }
 
   void _sellSnickers(BuildContext context, Snickers snickers) {
+    navigationController.setIsLoading(true);
     sellSnickers(context, {
       "snickers_id": snickers.id,
       "price": 0,
